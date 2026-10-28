@@ -1,56 +1,117 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cookie Clicker</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Goku: Ki Ascension</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-     <div class="game">
- 
-    <div class="click-area">
-      <h1 id="score">0 ki</h1>
-      <p id="cps">0 ki per seconde</p>
- 
-      <button id="ki-btn" class="saiyan">
-        <img src="png" alt="saiyan" id="saiyin-img">
-      </button>
- 
-    
-      <div id="floating-container"></div>
-    </div>
- 
 
-    <div class="shop">
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="producers">Producenten</button>
-        <button class="tab-btn" data-tab="upgrades">Upgrades</button>
-      </div>
- 
-      <div id="producers" class="tab-content active">
-       
-      </div>
- 
-      <div id="upgrades" class="tab-content">
-        
-      </div>
-    </div>
-    <div class="liquid-glass">
-  <p>Dit is een liquid glass effect!</p>
-</div>
+  <div class="scene">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="blob b4"></div>
 
- 
+    <header class="topbar glass">
+      <h1>Goku: Ki Ascension</h1>
+      <div class="topbar-actions">
+        <button id="save-btn" class="icon-btn" title="Save game">💾</button>
+        <button id="settings-btn" class="icon-btn" title="Settings">⚙️</button>
+      </div>
+    </header>
 
-    <div class="purchases">
-      <h2>Mijn aankopen</h2>
-      <ul id="purchase-list">
-        <li class="empty-msg">Nog niets gekocht...</li>
-      </ul>
-    </div>
- 
+    <main class="layout">
+
+      <!-- LEFT: player stats -->
+      <section class="panel glass stats-panel">
+        <h2>Warrior stats</h2>
+        <div class="stat-row"><span>Level</span><strong id="stat-level">1</strong></div>
+        <div class="stat-row"><span>Transformation</span><strong id="stat-transformation">Base Form</strong></div>
+        <div class="stat-row"><span>Ki per click</span><strong id="stat-kpc">1</strong></div>
+        <div class="stat-row"><span>Ki per second</span><strong id="stat-kps">0</strong></div>
+        <div class="stat-row"><span>Lifetime Ki</span><strong id="stat-lifetime">0</strong></div>
+
+        <div class="level-bar-wrap">
+          <div class="level-bar"><div class="level-bar-fill" id="level-bar-fill"></div></div>
+          <p class="level-bar-label" id="level-bar-label">0 / 100 Ki to next level</p>
+        </div>
+      </section>
+
+      <!-- CENTER: Goku click area -->
+      <section class="panel glass glass-sheen click-panel">
+        <p class="ki-label">KI</p>
+        <h2 class="ki-value" id="ki-value">0</h2>
+
+        <div class="goku-frame" id="goku-frame">
+          <div class="aura" id="goku-aura"></div>
+          <button id="goku-btn" class="goku-click" aria-label="Click Goku">
+            <img id="goku-img" src="vormen/base.gif" alt="Goku">
+          </button>
+          <div id="particle-layer"></div>
+          <div id="float-layer"></div>
+        </div>
+
+        <p class="click-hint">Tap Goku to gather Ki</p>
+      </section>
+
+      <!-- RIGHT: upgrade shop -->
+      <section class="panel glass shop-panel">
+        <h2>Training &amp; upgrades</h2>
+        <div id="shop-list" class="shop-list"><!-- gevuld via JS --></div>
+      </section>
+
+      <!-- BOTTOM: transformation timeline + achievements -->
+      <section class="panel glass bottom-panel">
+        <h2>Transformation path</h2>
+        <div id="timeline" class="timeline"><!-- gevuld via JS --></div>
+
+        <h2 class="ach-title">Achievements</h2>
+        <div id="achievements" class="achievements"><!-- gevuld via JS --></div>
+      </section>
+
+    </main>
   </div>
- 
-  <script src="script.js"></script>
+
+  <!-- Transformatie flash overlay -->
+  <div id="transform-overlay" class="transform-overlay">
+    <div class="transform-card glass">
+      <p class="transform-eyebrow">TRANSFORMATION UNLOCKED</p>
+      <h2 id="transform-name">SUPER SAIYAN</h2>
+      <p id="transform-meta">Level 20 · 30,000 Lifetime Ki</p>
+    </div>
+  </div>
+
+  <!-- Settings modal -->
+  <div id="settings-modal" class="modal-overlay">
+    <div class="modal glass">
+      <div class="modal-header">
+        <h2>Settings</h2>
+        <button id="settings-close" class="icon-btn">✕</button>
+      </div>
+
+      <div class="setting-row">
+        <span>Sound effects</span>
+        <label class="switch"><input type="checkbox" id="toggle-sound"><span class="switch-track"></span></label>
+      </div>
+      <div class="setting-row">
+        <span>Music</span>
+        <label class="switch"><input type="checkbox" id="toggle-music"><span class="switch-track"></span></label>
+      </div>
+      <div class="setting-row">
+        <span>Reduced motion</span>
+        <label class="switch"><input type="checkbox" id="toggle-motion"><span class="switch-track"></span></label>
+      </div>
+
+      <div class="modal-actions">
+        <button id="save-game-btn" class="btn btn-primary">Save game</button>
+        <button id="reset-game-btn" class="btn btn-danger">Reset game</button>
+      </div>
+      <p id="reset-confirm-text" class="reset-confirm hidden">Click reset again to confirm. This cannot be undone.</p>
+    </div>
+  </div>
+
+  <script src="code.js"></script>
 </body>
 </html>
