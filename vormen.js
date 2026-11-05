@@ -1,17 +1,10 @@
 const SAVE_KEY = "gokuKiAscensionSave";
 
-/* =========================================================
-   1. CONFIG
-   ========================================================= */
-
-// Lifetime Ki die nodig is per level
 const LEVELS = [
   0, 1100, 2250, 4500, 10000, 20000, 35000, 50000, 75000, 100000,
   125000, 150000, 175000, 200000, 225000, 250000, 270000, 285000, 295000, 300000
 ];
 
-// threshold = lifetime Ki nodig om de vorm te unlocken
-// (pas deze getallen aan om het spel sneller/langzamer te maken)
 const TRANSFORMATION_DATA = [
   { id: "base",          name: "Base Form",                  threshold: 0,          multiplier: 1, image: "vormen/base.gif" },
   { id: "ssj1",          name: "Super Saiyan",               threshold: 15000,      multiplier: 4.2, image: "vormen/ssj.gif" },
@@ -28,8 +21,6 @@ const TRANSFORMATION_DATA = [
   { id: "uibeyond",      name: "Beyond Ultra Instinct",      threshold: 30000000000, multiplier: 2000, image: "vormen/beyondui.gif" }
 ];
 
-// kind: "clickFlat" | "clickPercent" | "passiveFlat" | "globalMult"
-// special: true  -> wordt een SpiritBombUpgrade (eigen geluid + flash)
 const UPGRADE_DATA = [
   { id: "senzu",      name: "Senzu Beans",             icon: "🫘", desc: "Recover your energy and increase Ki gathering.",        kind: "clickPercent", value: 0.05, baseCost: 50,       maxLevel: Infinity },
   { id: "chamber",    name: "Hyperbolic Time Chamber", icon: "⏳", desc: "Train for years while only days pass outside.",         kind: "passiveFlat",  value: 2,    baseCost: 100,      maxLevel: Infinity },
@@ -47,7 +38,6 @@ const UPGRADE_DATA = [
   { id: "godki",      name: "God Ki",                  icon: "✨", desc: "Unlock divine energy.",                                 kind: "globalMult",   value: 100,  baseCost: 50000000, maxLevel: 1 }
 ];
 
-// check krijgt het Game-object mee
 const ACHIEVEMENT_DATA = [
   { id: "firstki",  name: "First Ki",            desc: "Generate your first Ki.",   check: g => g.player.lifetimeKi >= 1 },
   { id: "powerup",  name: "Power Up",            desc: "Reach 1,000 Ki.",           check: g => g.player.lifetimeKi >= 1000 },
