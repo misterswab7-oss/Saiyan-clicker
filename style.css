@@ -6,7 +6,6 @@
   --base-a: #ffffff;
   --base-b: #080808;
 
-  
   --text-primary: #000000;
   --text-secondary: rgba(0, 0, 0, 0.68);
   --text-tertiary: rgba(35, 35, 35, 0.42);
@@ -32,7 +31,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ---------- Ambient ki-energie achtergrond ---------- */
 .scene {
   position: relative;
   max-width: 1300px;
@@ -58,7 +56,6 @@ body {
 @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-30px,20px) scale(1.05);} }
 @keyframes drift3 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(20px,-24px) scale(1.1);} }
 
-/* ---------- Glasmateriaal-basis ---------- */
 .glass {
   position: relative;
   background: linear-gradient(155deg, var(--glass-fill-strong), var(--glass-fill) 55%, var(--glass-fill-soft));
@@ -70,9 +67,6 @@ body {
   overflow: hidden;
 }
 
-/* De bewegende glans is prijzig (blur + animatie op groot oppervlak),
-   dus die staat alleen nog aan op het click-paneel (.glass-sheen),
-   niet meer standaard op elk glaspaneel. Dat scheelt flink in fps. */
 .glass-sheen::before {
   content: "";
   position: absolute;
@@ -94,7 +88,6 @@ body {
   100% { transform: translateX(260%) rotate(8deg); opacity: 0; }
 }
 
-/* ---------- Topbar ---------- */
 .topbar {
   display: flex;
   align-items: center;
@@ -128,7 +121,6 @@ body {
 .icon-btn:hover { background: var(--glass-fill-strong); }
 .icon-btn:active { transform: scale(0.88); }
 
-/* ---------- Layout ---------- */
 .layout {
   display: grid;
   grid-template-columns: 1fr 1.3fr 1fr;
@@ -147,7 +139,6 @@ body {
   margin-bottom: 14px;
 }
 
-/* ---------- Stats panel ---------- */
 .stat-row {
   display: flex;
   justify-content: space-between;
@@ -181,7 +172,6 @@ body {
   color: var(--text-tertiary);
 }
 
-/* ---------- Click panel ---------- */
 .click-panel { text-align: center; display: flex; flex-direction: column; align-items: center; }
 .ki-label { font-size: 0.8rem; letter-spacing: 2px; color: var(--text-tertiary); margin-bottom: 2px; }
 .ki-value {
@@ -214,7 +204,6 @@ body {
   50% { transform: scale(1.08); opacity: 1; }
 }
 
-/* Aura-kleur per transformatie-stadium (data-stage = id uit TRANSFORMATION_DATA) */
 .goku-frame[data-stage="ssj1"] .aura,
 .goku-frame[data-stage="ssj2"] .aura,
 .goku-frame[data-stage="ssj3"] .aura,
@@ -294,7 +283,6 @@ body {
 
 .click-hint { color: var(--text-tertiary); font-size: 0.8rem; margin-top: 4px; }
 
-/* ---------- Shop panel ---------- */
 .shop-panel { max-height: 560px; display: flex; flex-direction: column; }
 .shop-list { overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding-right: 4px; }
 
@@ -329,7 +317,6 @@ body {
 .upgrade-meta { font-size: 0.68rem; color: var(--text-tertiary); margin-top: 3px; }
 .upgrade-price { font-size: 0.82rem; font-weight: 700; color: var(--accent-gold); white-space: nowrap; }
 
-/* ---------- Timeline ---------- */
 .timeline { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; }
 .timeline-step {
   flex: 0 0 auto;
@@ -348,7 +335,6 @@ body {
 .timeline-step h4 { font-size: 0.78rem; font-weight: 700; margin-bottom: 4px; }
 .timeline-step p { font-size: 0.68rem; color: var(--text-tertiary); }
 
-/* ---------- Achievements ---------- */
 .ach-title { margin-top: 20px; }
 .achievements {
   display: grid;
@@ -375,7 +361,6 @@ body {
 .ach-card h4 { font-size: 0.82rem; font-weight: 700; }
 .ach-card p { font-size: 0.7rem; color: var(--text-tertiary); margin-top: 3px; }
 
-/* ---------- Transformatie-overlay ---------- */
 .transform-overlay {
   position: fixed; inset: 0;
   display: flex; align-items: center; justify-content: center;
@@ -403,7 +388,6 @@ body {
 }
 .transform-card p { color: var(--text-secondary); font-size: 0.85rem; }
 
-/* ---------- Settings modal ---------- */
 .modal-overlay {
   position: fixed; inset: 0;
   background: rgba(5,8,20,0.55);
@@ -464,20 +448,18 @@ body {
 .reset-confirm { margin-top: 10px; font-size: 0.75rem; color: #ffb3b3; text-align: center; }
 .hidden { display: none; }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .layout { grid-template-columns: 1fr; }
   .bottom-panel { grid-column: 1; }
   .click-panel { order: -1; }
 }
 
-/* Reduced motion */
 body.reduced-motion * {
   animation-duration: 0.01ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;
 }
-/* Dunne zwarte rand om alle boxes */
+
 .glass,
 .upgrade-item,
 .timeline-step,
@@ -485,32 +467,30 @@ body.reduced-motion * {
   border: 1px solid #000;
 }
 
-/* de ontgrendelde kaartjes hadden een eigen (gouden) randkleur, die wordt ook zwart */
 .timeline-step.unlocked,
 .ach-card.unlocked {
   border-color: #000;
 }
-/* ---------- Scrollbar van de upgrade-box ---------- */
+
 .shop-list {
-  padding-right: 8px;                 /* ruimte tussen de items en de scrollbar */
-  scrollbar-width: thin;              /* Firefox */
+  padding-right: 8px;
+  scrollbar-width: thin;
   scrollbar-color: rgba(255,255,255,0.3) transparent;
   scroll-behavior: smooth;
 }
 
-/* Chrome, Edge, Safari */
 .shop-list::-webkit-scrollbar { width: 8px; }
 
 .shop-list::-webkit-scrollbar-track {
   background: rgba(255,255,255,0.05);
   border-radius: 999px;
-  margin: 4px 0;                      /* track stopt iets voor de rand */
+  margin: 4px 0;
 }
 
 .shop-list::-webkit-scrollbar-thumb {
   background: rgba(255,255,255,0.3);
   border-radius: 999px;
-  border: 2px solid transparent;      /* maakt de thumb optisch slanker */
+  border: 2px solid transparent;
   background-clip: padding-box;
   transition: background 0.2s ease;
 }
