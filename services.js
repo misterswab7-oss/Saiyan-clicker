@@ -1,4 +1,3 @@
-
 class SoundManager {
   constructor(settings) {
     this.settings = settings;
@@ -19,7 +18,6 @@ class SoundManager {
       osc.start();
       osc.stop(this.ctx.currentTime + duration);
     } catch (e) {
-      
     }
   }
 }
@@ -97,7 +95,7 @@ class GokuView {
 
   pulse() {
     this.button.classList.remove("pulse");
-    void this.button.offsetWidth; 
+    void this.button.offsetWidth;
     this.button.classList.add("pulse");
   }
 
@@ -144,10 +142,9 @@ class GokuView {
 class ShopView {
   constructor(onBuy) {
     this.list = document.getElementById("shop-list");
-    this.onBuy = onBuy; 
+    this.onBuy = onBuy;
   }
 
- 
   render(shop, player) {
     this.list.innerHTML = "";
 
@@ -182,7 +179,6 @@ class ShopView {
     });
   }
 
-
   updateAffordability(shop, player) {
     shop.upgrades.forEach(u => {
       if (u.isMaxed) return;
@@ -210,7 +206,6 @@ class TimelineView {
   }
 }
 
-
 class AchievementView {
   constructor() {
     this.container = document.getElementById("achievements");
@@ -228,7 +223,6 @@ class AchievementView {
     });
   }
 }
-
 
 class TransformOverlay {
   constructor() {
