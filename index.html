@@ -24,7 +24,6 @@
 
     <main class="layout">
 
-      <!-- LEFT: player stats -->
       <section class="panel glass stats-panel">
         <h2>Warrior stats</h2>
         <div class="stat-row"><span>Level</span><strong id="stat-level">1</strong></div>
@@ -39,7 +38,7 @@
         </div>
       </section>
 
-      <!-- CENTER: Goku click area -->
+  
       <section class="panel glass glass-sheen click-panel">
         <p class="ki-label">KI</p>
         <h2 class="ki-value" id="ki-value">0</h2>
@@ -59,22 +58,25 @@
       <!-- RIGHT: upgrade shop -->
       <section class="panel glass shop-panel">
         <h2>Training &amp; upgrades</h2>
-        <div id="shop-list" class="shop-list"><!-- gevuld via JS --></div>
+        <div id="shop-list" class="shop-list"></div>
       </section>
 
-      <!-- BOTTOM: transformation timeline + achievements -->
+      
       <section class="panel glass bottom-panel">
         <h2>Transformation path</h2>
-        <div id="timeline" class="timeline"><!-- gevuld via JS --></div>
+        <div id="timeline" class="timeline"></div>
+
+        <h2 class="section-title">Upgrade overview</h2>
+        <div class="overview-wrap"><table id="upgrade-overview" class="overview-table"></table></div>
 
         <h2 class="ach-title">Achievements</h2>
-        <div id="achievements" class="achievements"><!-- gevuld via JS --></div>
+        <div id="achievements" class="achievements"></div>
       </section>
 
     </main>
   </div>
 
-  <!-- Transformatie flash overlay -->
+  
   <div id="transform-overlay" class="transform-overlay">
     <div class="transform-card glass">
       <p class="transform-eyebrow">TRANSFORMATION UNLOCKED</p>
@@ -83,7 +85,7 @@
     </div>
   </div>
 
-  <!-- Settings modal -->
+ 
   <div id="settings-modal" class="modal-overlay">
     <div class="modal glass">
       <div class="modal-header">
@@ -112,6 +114,49 @@
     </div>
   </div>
 
-  <script src="code.js"></script>
+  <script src="javascript/config/constants.js"></script>
+  <script src="javascript/config/levels.js"></script>
+  <script src="javascript/config/transformations.js"></script>
+  <script src="javascript/config/upgrades.js"></script>
+  <script src="javascript/config/achievements.js"></script>
+
+  
+  <script src="javascript/utils/Formatter.js"></script>
+
+ 
+  <script src="javascript/models/LevelSystem.js"></script>
+  <script src="javascript/models/Transformation.js"></script>
+  <script src="javascript/models/Upgrade.js"></script>
+  <script src="javascript/models/upgrades/ClickFlatUpgrade.js"></script>
+  <script src="javascript/models/upgrades/ClickPercentUpgrade.js"></script>
+  <script src="javascript/models/upgrades/PassiveFlatUpgrade.js"></script>
+  <script src="javascript/models/upgrades/GlobalMultiplierUpgrade.js"></script>
+  <script src="javascript/models/upgrades/SpiritBombUpgrade.js"></script>
+  <script src="javascript/models/UpgradeFactory.js"></script>
+  <script src="javascript/models/Achievement.js"></script>
+  <script src="javascript/models/Player.js"></script>
+  <script src="javascript/models/Settings.js"></script>
+  <script src="javascript/models/Shop.js"></script>
+  <script src="javascript/models/StatsCalculator.js"></script>
+
+  
+  <script src="javascript/services/SoundManager.js"></script>
+  <script src="javascript/services/SaveManager.js"></script>
+  <script src="javascript/services/GameStorage.js"></script>
+
+ 
+  <script src="javascript/views/StatsView.js"></script>
+  <script src="javascript/views/GokuView.js"></script>
+  <script src="javascript/views/ShopView.js"></script>
+  <script src="javascript/views/TimelineView.js"></script>
+  <script src="javascript/views/AchievementView.js"></script>
+  <script src="javascript/views/TransformOverlay.js"></script>
+  <script src="javascript/views/SettingsModal.js"></script>
+  <script src="javascript/views/UpgradeOverviewView.js"></script>
+
+  
+  <script src="javascript/controllers/ResetHandler.js"></script>
+  <script src="javascript/Game.js"></script>
+  <script src="javascript/main.js"></script>
 </body>
 </html>
